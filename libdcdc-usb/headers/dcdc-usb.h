@@ -1,20 +1,25 @@
 #ifndef DCDCUSB_H
 #define DCDCUSB_H
 
+
 #define DCDC_VID	0x04d8
 #define DCDC_PID	0xd003
 
+#include <libusb-1.0/libusb.h>
+#include <stdbool.h>
+
 #define MAX_TRANSFER_SIZE	24
 /* USB communication wrappers */
-struct usb_dev_handle * dcdc_connect();
-int dcdc_send(struct usb_dev_handle *h, unsigned char *data, int size);
-int dcdc_recv(struct usb_dev_handle *h, unsigned char *data, int size, int timeout);
-int dcdc_setup(struct usb_dev_handle *h);
+struct libusb_device_handle * dcdc_connect(struct libusb_context *ctx);
+int dcdc_send(struct libusb_device_handle *dev_handle, unsigned char *data, int size);
+int dcdc_recv(struct libusb_device_handle *dev_handle, unsigned char *data, int size, int timeout);
+int dcdc_setup(struct libusb_device_handle *dev_handle, bool verbose);
+int dcdc_close(struct libusb_device_handle *dev_handle);
 
 /* DCDC USB protocol */
-int dcdc_get_status(struct usb_dev_handle *h, unsigned char *buf, int buflen);
-int dcdc_set_vout(struct usb_dev_handle *h, double vout);
-int dcdc_get_vout(struct usb_dev_handle *h, unsigned char *buf, int buflen);
+int dcdc_get_status(struct libusb_device_handle *dev_handle, unsigned char *buf, int buflen);
+int dcdc_set_vout(struct libusb_device_handle *dev_handle, double vout);
+int dcdc_get_vout(struct libusb_device_handle *dev_handle, unsigned char *buf, int buflen);
 int dcdc_parse_data(unsigned char *data, int size);
 
 /* DCDC USB data parsing */

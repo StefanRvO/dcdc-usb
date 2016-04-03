@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../libdcdc-usb/headers/dcdc-usb.h
+libusb-1.0/libusb.h
+-
+stdbool.h
+-
+
+/home/stefan/dcdc-usb/libusb1/dcdc-usb/sources/main.c
+stdio.h
+-
+unistd.h
+-
+string.h
+-
+ctype.h
+-
+libusb-1.0/libusb.h
+-
+usb.h
+-
+dcdc-usb.h
+/home/stefan/dcdc-usb/libusb1/dcdc-usb/sources/dcdc-usb.h
+

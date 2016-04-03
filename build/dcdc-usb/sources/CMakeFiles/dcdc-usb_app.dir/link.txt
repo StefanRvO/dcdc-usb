@@ -1,0 +1,1 @@
+/usr/bin/cc     CMakeFiles/dcdc-usb_app.dir/main.c.o  -o ../../dcdc-usb_app -rdynamic ../../libdcdc-usb/sources/libdcdc-usb.a -lusb -lusb-1.0 -lm 

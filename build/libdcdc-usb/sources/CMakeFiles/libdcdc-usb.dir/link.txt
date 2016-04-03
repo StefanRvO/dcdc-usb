@@ -1,0 +1,2 @@
+/usr/bin/ar qc liblibdcdc-usb.a  CMakeFiles/libdcdc-usb.dir/dcdc-usb-comm.c.o CMakeFiles/libdcdc-usb.dir/dcdc-usb-parse.c.o CMakeFiles/libdcdc-usb.dir/dcdc-usb-proto.c.o
+/usr/bin/ranlib liblibdcdc-usb.a

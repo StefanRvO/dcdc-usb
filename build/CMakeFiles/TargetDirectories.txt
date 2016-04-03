@@ -1,0 +1,12 @@
+/home/stefan/dcdc-usb/libusb1/build/CMakeFiles/edit_cache.dir
+/home/stefan/dcdc-usb/libusb1/build/CMakeFiles/rebuild_cache.dir
+/home/stefan/dcdc-usb/libusb1/build/dcdc-usb/CMakeFiles/edit_cache.dir
+/home/stefan/dcdc-usb/libusb1/build/dcdc-usb/CMakeFiles/rebuild_cache.dir
+/home/stefan/dcdc-usb/libusb1/build/dcdc-usb/sources/CMakeFiles/edit_cache.dir
+/home/stefan/dcdc-usb/libusb1/build/dcdc-usb/sources/CMakeFiles/rebuild_cache.dir
+/home/stefan/dcdc-usb/libusb1/build/dcdc-usb/sources/CMakeFiles/dcdc-usb_app.dir
+/home/stefan/dcdc-usb/libusb1/build/libdcdc-usb/CMakeFiles/edit_cache.dir
+/home/stefan/dcdc-usb/libusb1/build/libdcdc-usb/CMakeFiles/rebuild_cache.dir
+/home/stefan/dcdc-usb/libusb1/build/libdcdc-usb/sources/CMakeFiles/edit_cache.dir
+/home/stefan/dcdc-usb/libusb1/build/libdcdc-usb/sources/CMakeFiles/rebuild_cache.dir
+/home/stefan/dcdc-usb/libusb1/build/libdcdc-usb/sources/CMakeFiles/dcdc-usb.dir

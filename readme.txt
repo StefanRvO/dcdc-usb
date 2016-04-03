@@ -16,3 +16,9 @@ dcdc-usb -a will display all settings from the device.
 dcdc-usb -v 20.50 will set the output voltage to 20.5V.
 
 
+This branch
+------------
+
+This branch aims to convert the app into using libusb1.0 instead of 0.1
+
+Also, the buildsystem will be changed to a cmake based one.

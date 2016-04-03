@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2011 by Mini-Box.com, iTuner Networks Inc.
  * Written by Nicu Pavel <npavel@mini-box.com>
  * All Rights Reserved
@@ -41,62 +41,62 @@ static int vout2dev(double vout)
     return (unsigned char)result;
 }
 
-static int dcdc_send_command(struct usb_dev_handle *h, unsigned char cmd, unsigned char val)
+static int dcdc_send_command(struct libusb_device_handle *dev_handle, unsigned char cmd, unsigned char val)
 {
     unsigned char c[3];
     c[0] = DCDCUSB_CMD_OUT;
     c[1] = cmd;
     c[2] = val;
-    
-    return dcdc_send(h, c, 3);
+
+    return dcdc_send(dev_handle, c, 3);
 }
 
-int dcdc_get_status(struct usb_dev_handle *h, unsigned char *buf, int buflen)
+int dcdc_get_status(struct libusb_device_handle *dev_handle, unsigned char *buf, int buflen)
 {
     unsigned char c[2];
     int ret = 0;
-    
+
     if (buflen < MAX_TRANSFER_SIZE)
 	return -1;
-	
+
     c[0] = DCDCUSB_GET_ALL_VALUES;
     c[1] = 0;
-    
-    if (dcdc_send(h, c, 2) < 0)
+
+    if (dcdc_send(dev_handle, c, 2) < 0)
     {
 	fprintf(stderr, "Cannot send command to device\n");
 	return -2;
     }
-    
-    if ((ret = dcdc_recv(h, buf, MAX_TRANSFER_SIZE, 1000)) < 0)
+
+    if ((ret = dcdc_recv(dev_handle, buf, MAX_TRANSFER_SIZE, 1000)) < 0)
     {
 	fprintf(stderr, "Cannot get device status\n");
 	return -3;
     }
-    
+
     return ret;
 }
 
-int dcdc_set_vout(struct usb_dev_handle *h, double vout)
+int dcdc_set_vout(struct libusb_device_handle *dev_handle, double vout)
 {
     if (vout < 5) vout = 5;
     if (vout > 24) vout = 24;
-    
-    return dcdc_send_command(h, CMD_WRITE_VOUT, vout2dev(vout));
+
+    return dcdc_send_command(dev_handle, CMD_WRITE_VOUT, vout2dev(vout));
 }
 
 /* value will be shown on dcdc_parse_data() */
-int dcdc_get_vout(struct usb_dev_handle *h, unsigned char *buf, int buflen)
+int dcdc_get_vout(struct libusb_device_handle *dev_handle, unsigned char *buf, int buflen)
 {
     int ret = 0;
-    
+
     if (buflen < MAX_TRANSFER_SIZE)
 	return -1;
 
-    if ((ret = dcdc_send_command(h, CMD_READ_VOUT, 0)) < 0)
+    if ((ret = dcdc_send_command(dev_handle, CMD_READ_VOUT, 0)) < 0)
 	return ret;
 
-    ret = dcdc_recv(h, buf, MAX_TRANSFER_SIZE, 1000);
+    ret = dcdc_recv(dev_handle, buf, MAX_TRANSFER_SIZE, 1000);
 
     return ret;
 }
@@ -125,6 +125,6 @@ int dcdc_parse_data(unsigned char *data, int size)
 	default:
 	    fprintf(stderr, "Unknown message\n");
     }
-    
+
     return 0;
 }
